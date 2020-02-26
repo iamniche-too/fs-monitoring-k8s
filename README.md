@@ -7,3 +7,7 @@ Then:
 ```
 $>./deploy.sh
 ```
+
+Resources
+
+Kafka metrics JSON from https://raw.githubusercontent.com/softwaremill/confluent-playground/master/metrics/kafka/ApacheKafkaBrokerMetrics.json

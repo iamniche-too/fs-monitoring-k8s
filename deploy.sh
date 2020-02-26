@@ -1,3 +1,4 @@
+source ./export-gcp-credentials.sh
 ./generate-cluster-connection-yaml.sh
 ./generate-grafana-secret.sh
 
