@@ -1,3 +1,5 @@
+#!/bin/bash
+source ./export-gcp-credentials.sh
 ./generate-cluster-connection-yaml.sh
 
 kubectl delete clusterrole prometheus --kubeconfig ./kubeconfig.yaml
