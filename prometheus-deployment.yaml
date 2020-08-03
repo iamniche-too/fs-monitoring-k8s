@@ -24,23 +24,25 @@ spec:
                   values: ["true"]
       containers:
         - name: prometheus
-          #image: prom/prometheus
-          image: nichemley/fs-prometheus-image
+          image: prom/prometheus
+          #image: nichemley/fs-prometheus-image
           args:
-            # Note - config file is added to image by Dockerfile, not via volume mount
+            # Note - config file is via volume mount
             - "--config.file=/etc/prometheus/prometheus-config.yaml"
             - "--storage.tsdb.path=/prometheus/"
           ports:
             - containerPort: 9090
           volumeMounts:
-            #- name: prometheus-config-volume
-            #  mountPath: /etc/prometheus/
+            - name: prometheus-config-volume
+              mountPath: /etc/prometheus/
             - name: prometheus-storage-volume
               mountPath: /prometheus/
+          securityContext:
+            runAsUser: 0
       volumes:
-        #- name: prometheus-config-volume
-        #  configMap:
-        #    defaultMode: 420
-        #    name: prometheus-server-conf
+        - name: prometheus-config-volume
+          configMap:
+            defaultMode: 420
+            name: prometheus-server-conf
         - name: prometheus-storage-volume
           emptyDir: {}
